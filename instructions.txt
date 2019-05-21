@@ -1,0 +1,10 @@
+Running the backend
+1. cd to the root of the project folder
+2. run: pip install -r api/requirements.txt
+3. run: python api/app.py
+
+Running the frontend
+1. cd into the "frontend" directory
+2. run: npm install (this installs the node_modules)
+3. run: npm start
+4. Navigate to "http://127.0.0.1:4200/" in your web browser

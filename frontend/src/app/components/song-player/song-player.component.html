@@ -1,0 +1,21 @@
+<div id="songPlayerDiv" style="background-color: #222323; color: white;">
+	<div class="row nested-row justify-content-between">
+		<div class="col-2">
+	    	<p style="margin: 1.25em 0.75em 0.75em 0.75em;">Currently Playing:</p>
+	    </div>
+	    <div class="col-4">
+	    	<p *ngIf="currentSong" style="margin: 1.25em 0.75em 0.75em 0.75em;">{{currentSong}} by {{currentArtist}}</p>
+	    </div>
+	    <div class="col-4">
+		    <select #deviceSelect class="custom-select custom-select-sm" (click)="getDevices()" style="margin:1.25em;">
+		      <option selected>Select Playback Device</option>
+		      <option *ngFor="let device of playbackDevices" value="{{device['id']}}">{{device['name']}}</option>
+		    </select>
+		</div>
+		<div class="col-2 text-md-center">
+			<i class="fas fa-play-circle" (click)="onClickStartPlayback($event)" style="margin:0.5em; font-size:2em; cursor:pointer;" *ngIf="!songPlaying"></i> 
+			<i class="fas fa-pause-circle" (click)="onClickPausePlayback()" style="margin:0.5em; font-size:2em; cursor:pointer;" *ngIf="songPlaying"></i>
+			<i class="fas fa-step-forward" (click)="onClickSkipToNextSong()" style="margin:0.5em; font-size:2em; cursor:pointer;"></i>
+		</div>
+	</div>
+</div>

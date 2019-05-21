@@ -1,0 +1,40 @@
+<div class="card full-height">
+	<div class="card-header row justify-content-between">
+		<span style="margin: 0.5em;">Song Search</span>
+		<div (click)="searchHidden = !searchHidden;" style="cursor: pointer; margin: 0.5em;">
+			<i *ngIf="searchHidden" class="fas fa-chevron-down"></i>
+			<i *ngIf="!searchHidden" class="fas fa-chevron-up"></i>
+		</div>
+	</div>
+	<div class="card-body" style="padding: 0.6em 0.4em 0.4em 0.4em;">
+		<div class="search-component input-group">
+			<div class="input-group-prepend">
+				<button *ngIf="!guestSearch" (click)="searchSpotify()" class="btn btn-outline-secondary" type="button">Search</button>
+				<button *ngIf="guestSearch" (click)="searchSpotifyAsGuest()" class="btn btn-outline-secondary" type="button">Guest Search</button>
+			</div>
+			<input #searchInput type="text" class="form-control">
+		</div>
+		<ul class="list-group list-group-flush search-list" [hidden]="searchHidden">
+			<li class="track list-group-item" *ngFor="let song of displayedResults; let i = index" style="padding: 0.3em 0.5em;">
+					<div class="col" style="padding: 0;">
+						<img class="rounded" [attr.src]="song['image_url']" height=100 width=100>
+					</div>
+					<div class="col" style="padding: 0 0.3em 0 0;">
+						<p><strong>{{song['name']}}</strong></p>
+						<p><small class="text-muted">{{song['artist']}}</small></p>
+						<p><small class="text-muted">{{song['album']}}</small></p>
+					</div>
+					<div class="col-md-push-6" style="padding-right: 0;">
+						<button [attr.data-index]="i" (click)="emitSongSelection($event, song)" class="add-track-button" class="btn btn-success btn-small" style="font-size: 0.8em;">
+							Add
+						</button>
+					</div>
+			</li>
+			<li *ngIf="resultsLoaded()" class="list-group-item">
+				<button (click)="loadMoreResults()" type="button" class="btn btn-success">Load More</button>
+			</li>
+		</ul>
+		
+ 
+	</div>
+</div>

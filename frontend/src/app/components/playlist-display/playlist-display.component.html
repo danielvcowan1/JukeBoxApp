@@ -1,0 +1,58 @@
+<!-- Create playlist modal dialog -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Create New Playlist</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.dismiss(null)">&#10006;</button>
+	</div>
+	<div class="modal-body">
+		<form> 
+			<div class="form-group">
+				<label for="playlistName">Name</label>
+				<div class="input-group">
+					<input #playlistName id="playlistName" placeholder="" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="playlistDescription">Description</label>
+				<div class="input-group">
+					<input #playlistDescription id="playlistDescription" placeholder="" type="text" class="form-control">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close({'name' : playlistName.value,'description': playlistDescription.value})">Create Playlist</button>
+	</div>
+</ng-template>
+
+<!-- Actual playlist display template -->
+<div class="card">
+	<div class="card-header row justify-content-between">
+		<h3 style="margin-left: 0.1em;">My Playlists</h3>
+		<div (click)="playlistsHidden = !playlistsHidden;" style="cursor: pointer; margin: 0.5em;">
+			<i *ngIf="playlistsHidden" class="fas fa-chevron-down"></i>
+			<i *ngIf="!playlistsHidden" class="fas fa-chevron-up"></i>
+		</div>
+	</div>
+	<table class="table table-striped" [hidden]="playlistsHidden">
+		<thead>
+			<tr>
+				<th scope="col" style="width: 8.33%;"></th>
+				<th scope="col" style="width: 25%;">Name</th>
+				<th scope="col" style="width: 50%;">About</th>
+				<th scope="col" style="width: 16.66%;">Public</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let playlist of playlists">
+				<td><button type="button" class="close float-left" (click)="deletePlaylist(playlist['id'])">&#10006;</button></td>
+				<td>{{playlist['name']}}</td>
+				<td>{{playlist['description']}}</td>
+				<td><button type="button" class="btn btn-success" (click)="emitPlaylistSelection($event, playlist['id'])">Open Playlist</button></td>
+			</tr>
+			<td colspan="4"><button (click)="createNewPlaylist(content)" type="button" class="btn btn-success" style="margin: 0.7em 0 0 0.3em;">Create New Playlist</button></td>
+			
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,35 @@
+.album-image{
+	float: left;
+}
+
+.add-track-button{
+	float: right !important;
+}
+
+.track{
+	display: inline-flex;
+	min-height: 150px;
+}
+
+.search-component{
+	margin-bottom: 0.5em;
+}
+
+/*
+.list-group {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height:300px;
+}
+*/
+
+.search-list{
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height:400px;
+}
+
+.full-height{
+  height:100%;
+}
+

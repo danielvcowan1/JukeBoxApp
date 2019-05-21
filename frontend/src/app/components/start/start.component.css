@@ -1,0 +1,35 @@
+#startPageDiv {
+    height: 93vh;
+    background-color: #003459;
+    color: #FFFFFF;
+    padding-top: 10px;
+}
+
+#startPageFlexbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 0.7em;
+}
+
+button {
+    margin: 3px;
+    color: #FFFFFF;
+    background-color: #4C6085;
+    border-color: #FFFFFF;
+    width: 15em;
+}
+
+/*
+Color scheme: 
+    black: #222323
+    white: #FFFFFF
+    "purple-navy": #4C6085
+    "prussian blue": #4C6085
+    "cerulean": #007EA7
+*/

@@ -1,0 +1,19 @@
+#bigDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(22, 22, 22);
+    height: 100%;
+    width: 100%;
+}
+
+
+#main {
+
+}
+
+.container-fluid {
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}

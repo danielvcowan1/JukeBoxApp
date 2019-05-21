@@ -1,0 +1,42 @@
+
+<div class="card">
+    <div class="card-header row justify-content-between" style="margin: 0; padding-left: 0.5em; padding-right: 0.3em;">
+        <h3 style = "margin: 0.1em 0 0.2em 0 !important;">Current Playlist: {{playlistName}}</h3>
+        <div *ngIf="playlistCode && !condensedView" class="p-3 mb-2 bg-dark text-white"
+            style="border-radius: 0.2em; padding: 0.5em !important; margin: 0 !important; max-height: fit-content !important;">
+            <h5 style="margin: 0 0 0.1em 0 !important; padding: 0 !important;">Access code: {{playlistCode}}</h5>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th *ngIf="canDelete"></th>
+                <th scope="col">Song</th>  
+                <th scope="col" *ngIf="!condensedView">Artist</th>
+                <!-- <th scope="col" *ngIf="!condensedView">Album</th> -->
+                <th scope="col"></th>
+                <th scope="col" class="text-center">Votes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let song of songData">
+            <td *ngIf="canDelete"><button type="button" class="close float-left" (click)="deleteSong(song['spotify_song_id'])">&#10006;</button></td>
+            <td [style.max-width]="condensedView ? '10em' : '15em' " class="text-truncate">
+                <span [ngStyle]="playStates.get(song['spotify_song_id']) && {'font-weight': 'bold'} || {'font-weight': 'normal'}">{{song['name']}}</span>
+                <div *ngIf="condensedView"><i><span [ngStyle]="playStates.get(song['spotify_song_id']) && {'font-weight': 'bold'} || {'font-weight': 'normal'}">{{song['artist']}}</span></i></div>
+            </td>
+            <td *ngIf="!condensedView" class="text-truncate" ng-style="playStates.get(song['spotify_song_id']) && {'font-weight':'bold'} || {'font-weight':'normal'}"><span [ngStyle]="playStates.get(song['spotify_song_id']) && {'font-weight': 'bold'} || {'font-weight': 'normal'}">{{song['artist']}}</span></td>
+            <!-- <td *ngIf="!condensedView" class="text-truncate">{{song['album']}}</td> -->
+            <td class="text-right">
+                <i class="far fa-thumbs-up" (click)="upvoteSong(song['id'], popup)" style="cursor: pointer;" *ngIf="!upvotes.get(song['id'])"></i> 
+                <i class="fas fa-thumbs-up" *ngIf="upvotes.get(song['id'])"></i> 
+            </td>
+            <td class="text-center"><span [ngStyle]="playStates.get(song['spotify_song_id']) && {'font-weight': 'bold'} || {'font-weight': 'normal'}">{{song['votes']}}</span></td>
+            <td>
+                <i class="far fa-thumbs-down" (click)="downvoteSong(song['id'], popup)" style="cursor: pointer;" *ngIf="!downvotes.get(song['id'])"></i> 
+                <i class="fas fa-thumbs-down" *ngIf="downvotes.get(song['id'])"></i>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

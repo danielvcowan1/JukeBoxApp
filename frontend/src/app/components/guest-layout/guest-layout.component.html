@@ -1,0 +1,18 @@
+<div id="guestPageDiv">
+    <div class="guestPageItemContainer">
+        <div class="connect input-group">
+            <input #connectInput placeholder="Enter a Playlist Code to Connect" type="text" class="form-control">
+            <div class="input-group-append">
+                <button (click)="connectToPlaylist()"type="button">Connect</button>
+            </div>
+        </div>
+        <div class="error" *ngIf="invalidCode">ERROR: Invalid access code!</div>
+        <div *ngIf="currentlyPlayingSong != ''" style="color:#FFFFFF; margin-top: 10px; margin-left: 10px;"><b>Currently Playing:</b> {{currentlyPlayingSong}} by {{currentlyPlayingArtist}}</div>
+        <div class="panel">
+            <playlist #playlistComponent [accessedSongData]="(guestSongData)" [canDelete]="false" [condensedView]="true"></playlist>
+        </div>
+        <div class="panel">
+            <search [guestSearch]="true" (addSongEvent)="playlistComponent.addSong($event)"></search>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+Sharing components explanation (navbar and search components):
+
+If you look in "frontend/src/app/components/app/app.component.html", you'll see the '<navbar>' html tag, which is how we use 
+the navbar component within the app component. The app component represents the root of the application, so putting 
+the navbar here will make it appear in every "page" in the app.  
+
+The other "pages" in the app are routed to via the "<router-outlet>" tag you see right below the navbar tag. 
+
+Also, note that the navbar component is declared in the "frontend/src/app/modules/app.module.ts", which allows us to use 
+it in the entire application.
+
+
+As for the search component, you'll see the "<search>" html tag in the 
+"frontend/src/app/components/host-layout/host-layout.component.html" markup, as well as 
+the "guest-layout.component.html" markup. This is incorporating the search component within these 
+two components (host-layout and guest-layout components). 
+
+Note that the search component is declared in the "frontend/src/app/modules/shared-components.module.ts". 
+This "shared-components" module is imported into "host-layout.module.ts" and "guest-layout.module.ts". 
+This means that we can only use the search component within the host-layout and guest-layout components.

@@ -1,0 +1,32 @@
+<div style="padding: 0 1em 0 1em;">
+    <div class="row">
+        <div class="col padding-min">
+            <div class="buttonDiv" *ngIf="!userAuthenticated && !obtainingToken">
+                Login to your Spotify account to get started <br />
+                <button type="button" id="loginButton" class="btn btn-light" (click)="performSpotifyLogin()">Login to Spotify</button>
+            </div>
+            <div class="loader" *ngIf="obtainingToken"></div>
+            <!-- <h2 class="display-4" *ngIf="displayName" [style.color]="'white'">Welcome Back {{displayName}}!</h2> -->
+            <div class="playlistDisplayContainer" *ngIf="userAuthenticated">
+                <playlist-display  class="hostPlaylists" (selectPlaylistEvent)=playlistComponent.getPlaylist($event)></playlist-display>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 padding-min">
+            <div class="searchContainer full-height" [hidden]="!userAuthenticated">
+                <search (addSongEvent)="playlistComponent.addSong($event)"></search>
+            </div>
+        </div>
+        <div class="col-md-8 padding-min">
+            <div class="playlistContainer" [hidden]="!userAuthenticated">
+                <playlist #playlistComponent [canDelete]="true" [condensedView]="false"></playlist>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col padding-min" style="max-height: fit-content;">
+            <song-player [hidden]="!userAuthenticated" (playSongEvent)=playlistComponent.highlightCurrentlyPlayingSong($event)></song-player>
+        </div>
+    </div>
+</div>

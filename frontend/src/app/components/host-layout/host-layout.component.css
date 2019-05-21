@@ -1,0 +1,64 @@
+.full-height{
+  height:100%;
+}
+
+.padding-min{
+  padding:4px;
+}
+
+.buttonDiv {
+  text-align: center;
+  padding: 1em;
+  color: #FFFFFF;
+}
+
+#loginButton {
+  margin-top: 1em;
+  background-color: #4C6085;
+  border-color: #FFFFFF;
+  width: 15em;
+  color: white;
+}
+
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.hostPageItemContainer {
+  margin: 10px;
+  margin-top: 0;
+}
+
+.hostPageItemContainer .playlistDisplayContainer {
+  margin-bottom: 6px;
+}
+
+.hostPageItemContainer .searchContainer {
+}
+
+.hostPageItemContainer .playlistContainer {
+
+}
+
+.hostPageItemContainer .songPlayerContainer {
+  border-radius: 4px;
+}
+
+.hostPageItemContainer h2 {
+  font-size: 2em;
+}
